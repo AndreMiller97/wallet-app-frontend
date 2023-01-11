@@ -1,13 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="PT-BR">
     <head>
+        <meta charset="UTF-8">
         <title>Wallet App - Login</title>
         <link rel="stylesheet" href="styles.css">
         <script src="index.js"></script>
     </head>
     <body>
-        <h1>
-            ola mundo!
-        </h1>
+        <div class="auth-container">
+            <div class="auth-content">
+                <div class="auth-content-container">
+
+                    <img class="logo"
+                    src="src/img/logo.png" 
+                    alt="Logo"
+                    >
+                    <h3 class="full-width mt larger text-left"> 
+                        Bem Vindo! </h3>
+                    <p class="mt small">
+                        Digite seu e-mail abaixo para ter acesso à aplicação financeira Wallet e ter melhor controle dos seus gastos mensais.
+                    </p>
+                    <label 
+                    class="mt" for="e-mail">
+                    E-mail
+                    </label>
+                    <input 
+                    class="mt smaller"
+                    name="email"
+                    id="input-email"
+                    type="input-email"
+                    placeholder="Digite seu E-mail"
+                    >
+                    <button 
+                    class="mt full-width">
+                    Login
+                    </button>
+                    <a class="mt larger">
+                        Não tem conta? Cadastre-se agora!
+                    </a>
+                </div>
+            </div>
+        </div>
+       
     </body>
 </html>
