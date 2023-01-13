@@ -21,21 +21,23 @@
                         Digite seu e-mail abaixo para ter acesso à aplicação financeira Wallet e ter melhor controle dos seus gastos mensais.
                     </p>
                     <label 
-                    class="mt" for="e-mail">
+                    class="mt" for="input-email">
                     E-mail
                     </label>
                     <input 
                     class="mt smaller"
-                    name="email"
+                    name="input-email"
                     id="input-email"
-                    type="input-email"
+                    type="text"
                     placeholder="Digite seu E-mail"
                     >
                     <button 
+                    onclick="onClickLogin()"
                     class="mt full-width">
                     Login
                     </button>
-                    <a class="mt larger">
+                    <a class="mt larger"
+                        href="src/pages/register/cadastrar.html">
                         Não tem conta? Cadastre-se agora!
                     </a>
                 </div>
