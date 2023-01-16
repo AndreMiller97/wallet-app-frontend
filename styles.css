@@ -74,7 +74,7 @@
   }
 
   button.small{
-    border-width: 2px;
+    border-width: 2px; 
     border-color: #5936cd;
     border-style: solid;
     background-color: #FFFFFF;
@@ -82,6 +82,13 @@
     font-weight: bold;
     font-size: 14px;
     border-radius: 8px;
+    height: 36px;
+    width: 90px;
+  }
+  
+  button.add{ 
+    background-color: transparent;
+    border-style: none;
     height: 36px;
     width: 90px;
   }
