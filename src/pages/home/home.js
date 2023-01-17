@@ -1,4 +1,64 @@
 
+
+//
+const renderFinanceList = (data) => {
+    const table = document.getElementById("finances-table")
+
+    // função utilizada para fazer interação com array para renderizar a list
+   data.map(item => {
+    const tableRow = document.createElement("tr")
+    tableRow.className ="mt smaller"
+
+    // title
+    const titleTd = document.createElement("td")
+    const titleText = document.createTextNode(item.title)
+    titleTd.appendChild(titleText)
+    tableRow.appendChild(titleTd)
+
+    // category
+    const categoryTd = document.createElement("td")
+    const categoryText = document.createTextNode(item.name)
+    categoryTd.appendChild(categoryText)
+    tableRow.appendChild(categoryTd)
+
+    //Date
+    const dateTd = document.createElement("td")
+    const dateText = document.createTextNode(
+        new Date(item.date).toLocaleDateString("pt-BR")
+    )
+    dateTd.appendChild(dateText)
+    tableRow.appendChild(dateTd)
+
+    //value
+    const valueTd = document.createElement("td")
+    valueTd.className = "center"
+    const valueText = document.createTextNode(
+        new Intl.NumberFormat('pt-BR',{
+            style:'currency', currency: "BRL" 
+            }).format(item.value))
+    valueTd.appendChild(valueText)
+    tableRow.appendChild(valueTd)
+
+    //delete
+    const deleteTd = document.createElement("td")
+    deleteTd.className = "right"
+
+    // bloco de cod tes com imagem na ação
+    const image = document.createElement("img")
+    image.src = "../../../src/icons/excluir.png" 
+    image.className ="img-button-delete"
+    //deleteTd.appendChild(image)
+
+    const deleteText = document.createTextNode("")
+    deleteTd.appendChild(deleteText)
+    deleteTd.appendChild(image)
+    tableRow.appendChild(deleteTd)
+
+    // table add tableRow
+    table.appendChild(tableRow)
+   })
+}
+
 const renderFinanceElements = (data) =>{
     const totalItems = data.length
     //fazendo a soma do total de receita
@@ -29,7 +89,7 @@ const renderFinanceElements = (data) =>{
             }).format(revenues))
     const revenueTextElement = document.createElement("h1")
     revenueTextElement.className = "mt smaller"
-    revenueTextElement.style.color = '#3cac00'
+    revenueTextElement.style.color = '#047f29'
     revenueTextElement.appendChild(revenueText)
     financeCard2.appendChild(revenueTextElement)
 
@@ -59,7 +119,7 @@ const renderFinanceElements = (data) =>{
     if(totalValue < 0 ){
         balanceTextElement.style.color = '#ac0000'
     }else{
-        balanceTextElement.style.color = '#3cac00'
+        balanceTextElement.style.color = '#00a030'
     }
     balanceTextElement.appendChild(balanceText)
     financeCard4.appendChild(balanceTextElement)
@@ -81,6 +141,7 @@ const onLoadFinanceDate = async () => {
             )
             const data = await result.json()
            renderFinanceElements(data)
+           renderFinanceList(data)
             return data
         
     } catch (error) {
@@ -119,4 +180,5 @@ const onLoadUserInfo = () => {
 window.onload = ()=>{
     onLoadUserInfo()
     onLoadFinanceDate()
+    renderFinanceList()
 }
