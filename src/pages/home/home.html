@@ -1,61 +1,94 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
-    <head>
-        <meta charset="UTF-8">
-        <title>Wallet App - Home</title>
-        <link rel="stylesheet" href="../../../styles.css">
-        <link rel="stylesheet" href="styles.css">
-        <script src="home.js"></script>
-    </head>
-    <body>
-        <div class="home-content-container">
-            <div class="navbar">
-                <img 
-                class="logo-navbar"
-                src="../../img/logo.png" 
-                alt="Logo"
-                >
-                <div id="navbar-user-container" class="navbar-user-container">
-                    <div id="navbar-user-avatar" class="navbar-user-avatar">
-                    </div>
-                </div>
-            </div>
-            <div class="finance-card-container">
-                <div id="finance-card-1" class="finance-card">
-                    <h3>Total lançamentos</h3>
-                </div>
-                <div id="finance-card-2" class="finance-card">
-                    <h3>Receitas</h3>
-                </div>
-                <div id="finance-card-3" class="finance-card">
-                    <h3>Despesas</h3>
-                </div>
-                <div id="finance-card-4" class="finance-card">
-                    <h3>Balanço</h3>
-                </div>
-            </div>
-            <div class="table-container">
-                <div class="table-content-container">
-                    <div class="table-content-header">
-                        <h2>Últimos lançamentos</h2>
-                        <button class="add">
-                                <img
-                                 class="img-button-add"
-                                 src="../../../src/icons/add.png" 
-                                 alt="Adicionar">
-                        </button>
-                    </div>
-                    <table id="finances-table">
-                        <tr>
-                            <th>Title </th>
-                            <th>Categoria</th>
-                            <th>Data</th>
-                            <th class="center">Valor</th>
-                            <th class="right">Ação</th>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wallet App - Home</title>
+    <link rel="stylesheet" href="../../../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="home.js"></script>
+  </head>
+  <body>
+    <div class="home-content-container">
+      <div class="navbar">
+        <img class="logo-navbar" src="../../img/logo.png" alt="Logo" />
+        <div id="navbar-user-container" class="navbar-user-container">
+          <div id="navbar-user-avatar" class="navbar-user-avatar"></div>
         </div>
-    </body>
+      </div>
+      <div class="finance-card-container">
+        <div id="finance-card-1" class="finance-card"></div>
+        <div id="finance-card-2" class="finance-card"></div>
+        <div id="finance-card-3" class="finance-card"></div>
+        <div id="finance-card-4" class="finance-card"></div>
+      </div>
+      <div class="table-container">
+        <div class="table-content-container">
+          <div class="table-content-header">
+            <h2>Últimos lançamentos</h2>
+            <button onclick="onOpenModal()" class="add">
+              <img
+                class="img-button-add"
+                src="../../../src/icons/add.png"
+                alt="Adicionar"
+              />
+            </button>
+          </div>
+          <table id="finances-table"></table>
+        </div>
+      </div>
+    </div>
+    <div id="modal" class="modal-background">
+      <div class="modal-content">
+        <div class="modal-content-header">
+          <h3>Adicionar lançamentos</h3>
+          <button onclick="onCloseModal()" class="add">
+            <img
+              class="img-button-add"
+              src="../../../src/icons/add.png"
+              alt="Fechar"
+            />
+          </button>
+        </div>
+        <form id="form-finance-release" class="mt">
+          <label class="mt" for="input-title"> Titulo: </label>
+          <input
+            class="mt smaller"
+            type="text"
+            id="input-title"
+            name="input-title"
+            placeholder="Ex: conta de luz"
+            required
+          />
+          <label class="mt" for="input-value"> Valor: </label>
+          <input
+            class="mt smaller"
+            name="value"
+            id="input-value"
+            type="number"
+            step="any"
+            placeholder="R$ (Use valores negativos para uma despesa)"
+            required
+          />
+          <label class="mt" for="input-date"> Data: </label>
+          <input
+            class="mt smaller"
+            name="date"
+            id="input-date"
+            type="date"
+            required
+          />
+          <label class="mt" for="input-category"> Categoria: </label>
+          <select
+            class="mt smaller"
+            name="category"
+            id="input-category"
+            required
+          >
+            <option>Nome Categoria</option>
+          </select>
+          <button type="submit" class="mt full-width">Adicionar</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
