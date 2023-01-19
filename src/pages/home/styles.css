@@ -27,6 +27,22 @@
     width: auto;
 }
 
+.navebar-calendar-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+}
+
+.input-calendar{
+    width: 156px;
+    height: 42px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 .navbar-user-container{
     display: flex;
     flex-direction: row;
@@ -64,7 +80,7 @@
     width: 280px;
     height: 140px;
     border-style: solid;
-    border-color: rgb(80, 77, 77);
+    border-color: #0f0e0e;
     border-radius: 24px;
     background-color: #ffffff;
 }
@@ -106,6 +122,12 @@
     width: 45px;
     height: 45px;
 }
+
+.img-button-close{
+    width: 48px;
+    height: 48px;
+}
+
 .img-button-delete{
     width: 30px;
     height: 30px;
@@ -119,6 +141,7 @@ table{
 th{
     text-align: left;
     color: #141414;
+    font-weight: bold;
 }
 
 tr{
@@ -126,8 +149,14 @@ tr{
 }
 
 td{
-    color: #7c7c7c;
+    color: #0f0e0e;
+    border-radius: 2px;
 }
+
+tr:nth-child(even) {
+    background: #d6d5d5;
+    
+  }
 
 th.right{
     text-align: right;

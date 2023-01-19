@@ -93,6 +93,13 @@
     width: 90px;
   }
 
+  button.close{
+    background-color: transparent;
+    border-style: none;
+    height: 36px;
+    width: 90px;
+  }
+
   input{
     width: 100%;
     height: 48px;
@@ -168,7 +175,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #5936cd;
+  background-color: #0f9900;
 }
 
 .auth-content{
@@ -180,6 +187,8 @@
   min-height: 440px;
   background-color:#f4f4f9 ;
   border-radius: 24px;
+  border-style: solid;
+  border-color: #010400;
 }
 
 .auth-content-container{

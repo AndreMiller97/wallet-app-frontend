@@ -1,4 +1,11 @@
-// funtion delete
+
+//função onLogout
+const onLogout = () => {
+  localStorage.clear()
+  window.open("../../../index.html", "_self")
+}
+
+// função delete
 const onDeleteItem = async (id) => {
   try {
     const email = localStorage.getItem("@WalletApp:userEmail");
@@ -14,7 +21,7 @@ const onDeleteItem = async (id) => {
   }
 };
 
-//
+// função para renderizar itens na table ao ser adicionado
 const renderFinanceList = (data) => {
   const table = document.getElementById("finances-table");
   table.innerHTML = "";
@@ -92,11 +99,10 @@ const renderFinanceList = (data) => {
     deleteTd.onclick = () => onDeleteItem(item.id);
     deleteTd.className = "right";
 
-    // bloco de cod tes com imagem na ação
+    // bloco de cod teste com imagem na ação
     const image = document.createElement("img");
     image.src = "../../../src/icons/excluir.png";
     image.className = "img-button-delete";
-    //deleteTd.appendChild(image)
     deleteTd.appendChild(image);
     tableRow.appendChild(deleteTd);
 
@@ -105,7 +111,9 @@ const renderFinanceList = (data) => {
   });
 };
 
+// função para renderizar elementos da lista assim que feito o login
 const renderFinanceElements = (data) => {
+  //pegando o total de itens
   const totalItems = data.length;
   //fazendo a soma do total de receita
   const revenues = data
@@ -202,12 +210,13 @@ const renderFinanceElements = (data) => {
   financeCard4.appendChild(balanceTextElement);
 };
 
+// funçao que faz requisição na api para pegar a data
 const onLoadFinanceDate = async () => {
   try {
-    const date = "2022-12-15";
+    const dateInputValue = document.getElementById("select-date").value
     const email = localStorage.getItem("@WalletApp:userEmail");
     const result = await fetch(
-      `https://mp-wallet-app-api.herokuapp.com/finances?date=${date}`,
+      `https://mp-wallet-app-api.herokuapp.com/finances?date=${dateInputValue}`,
       {
         method: "GET",
         headers: {
@@ -224,6 +233,7 @@ const onLoadFinanceDate = async () => {
   }
 };
 
+// funçao para mostar dados iniciais apos login do usuario
 const onLoadUserInfo = () => {
   const email = localStorage.getItem("@WalletApp:userEmail");
   const name = localStorage.getItem("@WalletApp:userName");
@@ -240,16 +250,19 @@ const onLoadUserInfo = () => {
   // add logout link
   const logoutElement = document.createElement("a");
   const logoutText = document.createTextNode("sair");
+  logoutElement.onclick = () => onLogout()
+  logoutElement.style.cursor ="pointer"
   logoutElement.appendChild(logoutText);
   navbarUserInfo.appendChild(logoutElement);
 
-  // add user first latter inside avatar
+  // add primeira letra do usuario no elemento avatar
   const nameElement = document.createElement("h3");
   const nameText = document.createTextNode(name.charAt(0).toUpperCase());
   nameElement.appendChild(nameText);
   navbarUserAvatar.appendChild(nameElement);
 };
 
+// função que faz requisição na api para pegar dados da categoria
 const onLoadCategories = async () => {
   try {
     const categoriesSelect = document.getElementById("input-category");
@@ -275,12 +288,13 @@ const onOpenModal = () => {
   const openModal = document.getElementById("modal");
   openModal.style.display = "flex";
 };
-
+// fechar e fechar pop-up
 const onCloseModal = () => {
   const closeModal = document.getElementById("modal");
   closeModal.style.display = "none";
 };
 
+// função de POST para adição de um novo item
 const onCallAddFinance = async (data) => {
   try {
     const email = localStorage.getItem("@WalletApp:userEmail");
@@ -331,7 +345,19 @@ const onCreateFinanceRealese = async (target) => {
   }
 };
 
+// função para pegar a data atual do usuario
+setInitialDate = () =>{
+  const dateInput = document.getElementById("select-date")
+  const nowDate = new Date().toISOString().split("T")[0]
+  dateInput.value = nowDate
+  dateInput.addEventListener("change", () => {
+    onLoadFinanceDate()
+  })
+}
+
+// função de load ao carregar a tela inicial
 window.onload = () => {
+  setInitialDate()
   onLoadUserInfo();
   onLoadFinanceDate();
   onLoadCategories();
